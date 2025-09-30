@@ -16,6 +16,8 @@ import { MATERIAL_TYPE_OPTIONS, UNIT_OPTIONS, USER_TYPE_LABELS } from "@/lib/con
 import { MapPin, Eye, Calendar, Package } from "lucide-react"
 import { MaterialType, Unit, ListingStatus, UserType } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 interface Listing {
   id: string
   title: string
