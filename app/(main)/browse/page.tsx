@@ -188,12 +188,15 @@ export default function BrowseListingsPage() {
                   <label className="text-sm font-medium text-stone-700 mb-2 block">
                     Material Type
                   </label>
-                  <Select value={materialType} onValueChange={setMaterialType}>
+                  <Select
+                    value={materialType || "all"}
+                    onValueChange={(value) => setMaterialType(value === "all" ? "" : value)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="All materials" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All materials</SelectItem>
+                      <SelectItem value="all">All materials</SelectItem>
                       {MATERIAL_TYPE_OPTIONS.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
@@ -220,12 +223,15 @@ export default function BrowseListingsPage() {
                   <label className="text-sm font-medium text-stone-700 mb-2 block">
                     Status
                   </label>
-                  <Select value={status} onValueChange={setStatus}>
+                  <Select
+                    value={status || "all"}
+                    onValueChange={(value) => setStatus(value === "all" ? "" : value)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="All statuses" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All statuses</SelectItem>
+                      <SelectItem value="all">All statuses</SelectItem>
                       <SelectItem value="AVAILABLE">Available</SelectItem>
                       <SelectItem value="COMPLETED">Completed</SelectItem>
                     </SelectContent>
