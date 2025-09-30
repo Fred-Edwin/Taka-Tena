@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma"
 import { handleApiError, createUnauthorizedResponse, createNotFoundResponse, createForbiddenResponse } from "@/lib/api-error-handler"
 import { MaterialType, Unit, ListingStatus } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 const updateListingSchema = z.object({
   title: z.string().min(1, "Title is required").max(100, "Title must be less than 100 characters").optional(),
   description: z.string().min(1, "Description is required").max(500, "Description must be less than 500 characters").optional(),

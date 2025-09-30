@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { MaterialType } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 3600 // Revalidate every hour
 
 export async function GET() {

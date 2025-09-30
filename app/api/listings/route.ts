@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma"
 import { handleApiError, createUnauthorizedResponse } from "@/lib/api-error-handler"
 import { MaterialType, Unit } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 60 // Cache GET requests for 60 seconds
 
 const createListingSchema = z.object({
