@@ -5,6 +5,7 @@ import { hashPassword } from "@/lib/utils"
 import { UserType } from "@prisma/client"
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 const signupSchema = z.object({
   email: z.string().email("Please enter a valid email address"),

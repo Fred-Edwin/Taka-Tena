@@ -7,4 +7,4 @@ export { handler as GET, handler as POST }
 
 // Route segment config - prevent static generation
 export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
+export const runtime = 'nodejs'

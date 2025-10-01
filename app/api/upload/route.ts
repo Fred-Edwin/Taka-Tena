@@ -5,6 +5,7 @@ import { authOptions } from "@/lib/auth"
 import { MAX_IMAGE_SIZE, ALLOWED_IMAGE_TYPES, MAX_IMAGE_WIDTH } from "@/lib/constants"
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // Helper function to compress image using canvas
 async function compressImage(file: File, maxWidth: number = MAX_IMAGE_WIDTH): Promise<Blob> {

@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma"
 import { handleApiError, createUnauthorizedResponse, createNotFoundResponse } from "@/lib/api-error-handler"
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 const updateUserSchema = z.object({
   name: z.string().min(1, "Name is required").max(100, "Name must be less than 100 characters").optional(),
