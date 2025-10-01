@@ -53,7 +53,6 @@ export const metadata: Metadata = {
     description: "Kenya's leading marketplace for sustainable material exchange. Transform waste materials into opportunities while building a circular economy.",
     images: ["/og-image.png"]
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: {
     index: true,
     follow: true,
@@ -65,6 +64,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
