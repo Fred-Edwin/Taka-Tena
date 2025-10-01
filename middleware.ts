@@ -5,26 +5,7 @@ import { getToken } from "next-auth/jwt"
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  // Public routes that don't require authentication
-  const publicRoutes = [
-    "/",
-    "/browse",
-    "/impact",
-    "/login",
-    "/signup",
-  ]
-
-  // Check if it's a public route
-  if (publicRoutes.includes(pathname)) {
-    return NextResponse.next()
-  }
-
-  // Allow access to listing detail pages (public)
-  if (pathname.match(/^\/listings\/[^\/]+$/)) {
-    return NextResponse.next()
-  }
-
-  // Check if it's a protected route
+  // Check if it's a protected route first
   const protectedRoutes = [
     "/dashboard",
     "/listings/create",
@@ -35,17 +16,32 @@ export async function middleware(req: NextRequest) {
   const isProtected = pathname.match(/^\/listings\/[^\/]+\/edit$/) ||
                       protectedRoutes.some(route => pathname.startsWith(route))
 
-  if (isProtected) {
-    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
+  // Only run auth check for protected routes
+  if (!isProtected) {
+    return NextResponse.next()
+  }
+
+  try {
+    const token = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET,
+      secureCookie: process.env.NODE_ENV === "production"
+    })
 
     if (!token) {
       const url = new URL("/login", req.url)
       url.searchParams.set("callbackUrl", pathname)
       return NextResponse.redirect(url)
     }
-  }
 
-  return NextResponse.next()
+    return NextResponse.next()
+  } catch (error) {
+    console.error("Middleware error:", error)
+    // On error, redirect to login to be safe
+    const url = new URL("/login", req.url)
+    url.searchParams.set("callbackUrl", pathname)
+    return NextResponse.redirect(url)
+  }
 }
 
 export const config = {
