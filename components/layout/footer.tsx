@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Twitter, Mail, Heart, Recycle } from "lucide-react"
+import { Github, Linkedin, Mail, Heart, Recycle } from "lucide-react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -19,7 +19,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com"
+                href="https://github.com/Fred-Edwin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-forest-300 hover:text-sage-400 transition-colors"
@@ -28,16 +28,16 @@ export default function Footer() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://linkedin.com/in/edwinfred-kamau"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-forest-300 hover:text-sage-400 transition-colors"
-                aria-label="Twitter"
+                aria-label="LinkedIn"
               >
-                <Twitter className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:hello@takatena.co.ke"
+                href="mailto:edwinfredofficial@gmail.com"
                 className="text-forest-300 hover:text-sage-400 transition-colors"
                 aria-label="Email"
               >
