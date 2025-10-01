@@ -1,6 +1,5 @@
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { prisma } from "@/lib/prisma"
 import { verifyPassword } from "@/lib/utils"
 import { UserType } from "@prisma/client"
 
@@ -18,6 +17,9 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
+          // Lazy import prisma to avoid build-time execution
+          const { prisma } = await import("@/lib/prisma")
+
           // Find user by email
           const user = await prisma.user.findUnique({
             where: {
